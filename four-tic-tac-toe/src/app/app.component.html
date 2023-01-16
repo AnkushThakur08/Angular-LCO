@@ -1,4 +1,37 @@
 <div class="container">
-  <p class="display-2 text-white">Ankush</p>
-  <app-icon></app-icon>
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-lg-6">
+      <div class="text-center">
+        <h1 [hidden]="isCross" class="uppercase text-danger">
+          Player One Turn
+        </h1>
+        <h1 [hidden]="!isCross" class="uppercase text-danger">
+          Player Two Turn
+        </h1>
+      </div>
+
+      <div class="grid">
+        <div *ngFor="let item of itemArray; index as i">
+          <div class="card">
+            <div class="card-box box" (click)="handleClick(i)">
+              <app-icon [iconName]="item"></app-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="winMessage" class="col col-lg-6 text-center">
+      <h1 class="text-uppercase">
+        Game Over
+        <br />
+        {{ winMessage }}
+      </h1>
+      <button
+        (click)="reloadGame()"
+        class="btn btn-danger h1 text-uppercase ps-5 pe-5"
+      >
+        Reload Game
+      </button>
+    </div>
+  </div>
 </div>

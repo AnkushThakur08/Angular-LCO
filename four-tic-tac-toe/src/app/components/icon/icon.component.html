@@ -1,1 +1,15 @@
-<p class="display-3 text-white">icon works!</p>
+<div [ngSwitch]="iconName">
+  <div *ngSwitchCase="'empty'">
+    <fa-icon [icon]="faPenIcon" class="icon"></fa-icon>
+  </div>
+
+  <div *ngSwitchCase="'cross'">
+    <fa-icon [icon]="faTimesIcon" class="icon"></fa-icon>
+  </div>
+
+  <div *ngSwitchCase="'circle'">
+    <fa-icon [icon]="faCircleIcon" class="icon"></fa-icon>
+  </div>
+
+  <div *ngSwitchDefault>Something is not Right</div>
+</div>
