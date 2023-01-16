@@ -1,5 +1,6 @@
 // some random words
 export default [
+  'India',
   'Afghanistan',
   'Albania',
   'Algeria',
