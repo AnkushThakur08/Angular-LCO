@@ -27,10 +27,44 @@ export class TodoService {
 
       {
         id: '333',
-        title: 'Learn Angular',
-        isCompleted: true,
+        title: 'Learn React Native',
+        isCompleted: false,
         date: new Date(),
       },
     ];
   }
+
+  // We need to observe our service that, whenever you are done please give me the data, FOT THIS WE ARE USING OF
+
+  getTodo = () => {
+    return of(this.todos);
+  };
+
+  addTodo = (todo: Todo) => {
+    this.todos.push(todo);
+  };
+
+  updateTodo = (todo: Todo) => {
+    this.todos.map((individualTodo) => {
+      if (individualTodo.id == todo.id) {
+        todo.isCompleted = !todo.isCompleted;
+      }
+    });
+  };
+
+  // deleteTodo = (todo:Todo) => {
+  //   this.todos.map((individualTodo) => {
+  //     if(individualTodo.id == todo.id){
+  //       this.todos.splice(0, 1);
+
+  //     }
+
+  //   })
+
+  deleteTodo = (todo: Todo) => {
+    const indexofTodo = this.todos.findIndex(
+      (individualTodo) => individualTodo.id === todo.id
+    );
+    this.todos.splice(0, 1);
+  };
 }
