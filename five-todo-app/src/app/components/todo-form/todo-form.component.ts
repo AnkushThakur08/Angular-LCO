@@ -4,7 +4,7 @@ import { TodoService } from 'src/app/service/todo.service';
 
 import { Todo } from '../../model/Todo';
 
-// import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-todo-form',
@@ -19,10 +19,14 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {}
 
   addTodo = () => {
-    const newTodo = {
-      id: '1',
+    const newTodo: Todo = {
+      id: uuidv4(),
       title: this.todoTitle,
+      isCompleted: false,
       date: new Date(),
     };
+
+    this.todoService.addTodo(newTodo);
+    this.todoTitle = '';
   };
 }

@@ -65,6 +65,6 @@ export class TodoService {
     const indexofTodo = this.todos.findIndex(
       (individualTodo) => individualTodo.id === todo.id
     );
-    this.todos.splice(0, 1);
+    this.todos.splice(indexofTodo, 1);
   };
 }
