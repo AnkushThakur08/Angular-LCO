@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,34 +11,30 @@ export class AppComponent implements OnInit {
   title = 'six-signup-reactive-from';
 
   registerForm!: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue],
+      confirmPassowrd: ['', Validators.required],
+      acceptTandC: [false, Validators.requiredTrue],
     });
   }
 
   onSubmit = () => {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      return;
+      return alert('Form contains invalid Value');
     }
 
     console.table(this.registerForm.value);
     console.table(this.registerForm);
-
-    alert('Success Signup \n' + JSON.stringify(this.registerForm.value));
+    alert('Success Signup\n' + JSON.stringify(this.registerForm.value));
   };
 
   onReset = () => {
