@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { PasswordChecker } from './custome-validators/password-checker';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,20 +18,28 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassowrd: ['', Validators.required],
-      acceptTandC: [false, Validators.requiredTrue],
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassowrd: ['', [Validators.required]],
+        acceptTandC: [false, Validators.requiredTrue],
+      },
+      { validators: PasswordChecker('password', 'confirmPassowrd') }
+    );
+  }
+
+  // Helper
+  get helper() {
+    return this.registerForm.controls;
   }
 
   onSubmit = () => {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      return alert('Form contains invalid Value');
+      return;
     }
 
     console.table(this.registerForm.value);
