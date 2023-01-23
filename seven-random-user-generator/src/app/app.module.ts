@@ -14,9 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 // Componenets
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
+import { Card2Component } from './components/card2/card2.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent],
+  declarations: [AppComponent, CardComponent, Card2Component],
   imports: [
     BrowserModule,
     HttpClientModule,

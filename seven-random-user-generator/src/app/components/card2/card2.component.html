@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-body text-center">
+    <img
+      width="150"
+      height="150"
+      class="rounded-circle img-thumbnail border-danger"
+      [src]="user.picture?.large"
+      alt=""
+      srcset=""
+    />
+
+    <h1 class="card-title text-primary">
+      <span class="px-2">{{ user.name?.title }}</span
+      ><span class="px-2">{{ user.name?.first }}</span
+      ><span class="px-2">{{ user.name?.last }}</span>
+    </h1>
+
+    <!-- EMAIL -->
+
+    <h1 *ngIf="userEmail" class="text-muted h3">
+      {{ user.email }}
+    </h1>
+
+    <!-- Address -->
+    <h1 *ngIf="userAddress" class="text-muted h3">
+      {{ user.location?.city }} {{ user.location?.state }}
+      {{ user.location?.country }}
+    </h1>
+
+    <!-- PhoneNumber -->
+    <h1 *ngIf="userPhone" class="text-muted h3">
+      {{ user.phone }} , {{ user.cell }}
+    </h1>
+
+    <!-- DOB -->
+    <h1 *ngIf="userDob" class="text-muted h3">
+      {{ user.dob?.date | date }} , {{ user.dob?.age }} Year old
+    </h1>
+
+    <div class="my-4 h4">
+      <fa-icon
+        (mouseenter)="showEmail()"
+        class="px-4 h1"
+        style="cursor: pointer"
+        [icon]="faEnveloper"
+      ></fa-icon>
+
+      <fa-icon
+        (mouseenter)="showAddress()"
+        class="px-4 h1"
+        style="cursor: pointer"
+        [icon]="faMapMarkedAlt"
+      ></fa-icon>
+
+      <fa-icon
+        (mouseenter)="showPhoneNumber()"
+        class="px-4 h1"
+        style="cursor: pointer"
+        [icon]="faPhone"
+      ></fa-icon>
+
+      <fa-icon
+        (mouseenter)="showDOB()"
+        class="px-4 h1"
+        style="cursor: pointer"
+        [icon]="faDatabase"
+      ></fa-icon>
+    </div>
+  </div>
+</div>
