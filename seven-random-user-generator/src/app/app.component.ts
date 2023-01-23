@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     private userService: UserService,
     private toastr: ToastrService
   ) {}
+
   ngOnInit(): void {
     this.userService.getUser().subscribe(
       (user: any) => {
