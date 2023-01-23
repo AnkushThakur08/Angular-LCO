@@ -1,1 +1,41 @@
-<p>card works!</p>
+<div class="card">
+  <div class="card-body text-center">
+    <img
+      width="150"
+      height="150"
+      class="rounded-circle img-thumbnail border-danger"
+      [src]="user.picture?.large"
+      alt=""
+      srcset=""
+    />
+
+    <div class="card-title text-primary text-lead">
+      <h1>
+        <span class="px-2">{{ user.name?.title }}</span
+        ><span class="px-2">{{ user.name?.first }}</span
+        ><span class="px-2">{{ user.name?.last }}</span>
+      </h1>
+    </div>
+
+    <div class="card-text h5">
+      <fa-icon [icon]="faEnveloper"></fa-icon>
+      {{ user.email }}
+    </div>
+
+    <div class="card-text h5">
+      <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
+      {{ user.location?.city }} {{ user.location?.state }}
+      {{ user.location?.country }} {{ user.location?.postcode }}
+    </div>
+
+    <div class="card-text h5">
+      <fa-icon [icon]="faPhone"></fa-icon>
+      {{ user.phone }}
+    </div>
+
+    <div class="card-text">
+      <fa-icon [icon]="faDatabase"></fa-icon>
+      Registerd on {{ user.dob?.date | date }}
+    </div>
+  </div>
+</div>

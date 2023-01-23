@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  url = 'https://randomuser.me/api';
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getUser() {
+    return this.http.get(this.url);
+  }
 }
