@@ -3,6 +3,7 @@
     <div class="col col-md-4 offset-md-4">
       <div class="text-center">
         <app-card [user]="user" *ngIf="user; else loadingBlock"></app-card>
+
         <ng-template #loadingBlock>
           <div class="text-center mt-5">
             <div
