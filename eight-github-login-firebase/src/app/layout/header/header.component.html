@@ -1,1 +1,48 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" router [routerLink]="['/']">
+    <img
+      src="../../../assets/img.png"
+      width="30"
+      height="30"
+      alt="logo"
+      srcset=""
+    />
+
+    LCO Github Finder App
+  </a>
+
+  <div class="navbar-collapse">
+    <div class="navbar-nav ml-auto">
+      <div *ngIf="email" class="navbar-text float-left">
+        {{ email }}
+      </div>
+
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        >Home</a
+      >
+
+      <a
+        *ngIf="!email"
+        class="nav-item nav-link"
+        [routerLink]="['/signup']"
+        routerLinkActive="active"
+        >Sign-up</a
+      >
+
+      <a
+        *ngIf="!email"
+        class="nav-item nav-link"
+        [routerLink]="['/signin']"
+        routerLinkActive="active"
+        >Sign-in</a
+      >
+
+      <a *ngIf="email" class="nav-item nav-link" (click)="handleSignOut()"
+        >Logout</a
+      >
+    </div>
+  </div>
+</nav>
