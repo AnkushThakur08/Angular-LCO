@@ -25,4 +25,18 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  async onSubmit(formV: NgForm) {
+    const { email, password } = formV.form.value;
+    const result = this.auth.signUp(email, password);
+    console.log(result);
+    try {
+      this.router.navigateByUrl('/');
+      this.toastr.success('SignUp Success!');
+      formV.resetForm();
+    } catch (err) {
+      console.error(err.message);
+      this.toastr.error('SignUp Failed!');
+    }
+  }
 }

@@ -12,8 +12,9 @@ export class AuthService {
     this.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  signIn(email: string, password: string) {
+  signIn(email: string, password: string): Promise<any> {
     this.auth.signInWithEmailAndPassword(email, password);
+    return Promise.resolve();
   }
 
   getUser() {
