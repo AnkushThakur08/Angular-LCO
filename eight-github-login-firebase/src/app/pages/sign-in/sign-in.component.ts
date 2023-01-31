@@ -36,15 +36,14 @@ export class SignInComponent implements OnInit {
       .then((user) => {
         if (user) {
           this.router.navigateByUrl('/');
-          // this.toastr.success('SignIn Success!');
-          // formV.resetForm();
+          this.toastr.success('SignIn Success!');
         } else {
           this.toastr.error('SignIn Error');
         }
       })
       .catch((err) => {
         console.error(err.message);
-        this.toastr.error('SignUp Failed!');
+        this.toastr.error(err);
       });
   }
 }
