@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "aae95c64-ffc0-4ffb-b621-3305e9976dd6"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nine-socialmedia-app": {
+    "nine-socialMedia-App": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nine-socialmedia-app",
+            "outputPath": "dist/nine-socialMedia-App",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nine-socialmedia-app:build:production"
+              "browserTarget": "nine-socialMedia-App:build:production"
             },
             "development": {
-              "browserTarget": "nine-socialmedia-app:build:development"
+              "browserTarget": "nine-socialMedia-App:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nine-socialmedia-app:build"
+            "browserTarget": "nine-socialMedia-App:build"
           }
         },
         "test": {
@@ -102,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "nine-socialmedia-app"
+  "defaultProject": "nine-socialMedia-App"
 }
