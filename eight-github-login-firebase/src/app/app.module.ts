@@ -48,7 +48,11 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot({
+      timeOut: 2500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
   ],
