@@ -22,6 +22,9 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 // Borwser Image Resizer
 import { readAndCompressImage } from 'browser-image-resizer';
 
+// Image Config
+import { imageConfig } from 'src/app/utils/config';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -72,5 +75,34 @@ export class SignupComponent implements OnInit {
         this.toastr.error('Signup Failed');
         this.toastr.error(err.message);
       });
+  }
+
+  async uploadFile(event) {
+    const file = event.target.file[0];
+
+    let resizedImage = readAndCompressImage(file, imageConfig);
+
+    const filePath = file.name; /* rename the image with UUID */
+    /* ref means, in firebase get that DB URL */
+    const fileRef = this.storage.ref(filePath);
+
+    // Now Finally Upload
+    const task = this.storage.upload(filePath, resizedImage);
+
+    task.percentageChanges().subscribe((percentage) => {
+      this.uploadPercentage = percentage;
+    });
+
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            this.picture = url;
+            this.toastr.success('Image Upload Successfully');
+          });
+        })
+      )
+      .subscribe();
   }
 }

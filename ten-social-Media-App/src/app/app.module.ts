@@ -12,6 +12,7 @@ import { AddpostComponent } from './pages/addpost/addpost.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,10 @@ import { SignupComponent } from './pages/signup/signup.component';
     AddpostComponent,
     PagenotfoundComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
